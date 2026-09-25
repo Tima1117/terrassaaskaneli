@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+@theme {
+  --color-copper: #ae805c;
+  --color-copper-light: #c49878;
+  --color-copper-dark: #8a6244;
+  --color-forest: #3b592a;
+  --color-forest-light: #50703d;
+  --color-forest-dark: #2a3f1e;
+  --color-beige: #dfd3c3;
+  --color-beige-light: #ede5d8;
+  --color-beige-dark: #c4b5a0;
+  --color-wine: #802427;
+  --color-wine-light: #9e2e32;
+  --color-dark: #0d0d0d;
+  --color-dark-card: #1a1a1a;
+  --color-dark-border: #2a2a2a;
+  --font-sans: "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-dark);
+  color: var(--color-beige);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0d0d0d;
+}
+::-webkit-scrollbar-thumb {
+  background: #ae805c;
+  border-radius: 3px;
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(174, 128, 92, 0.15);
+}
+
+.glass-dark {
+  background: rgba(13, 13, 13, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(174, 128, 92, 0.12);
+}
+
+/* Section divider */
+.divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, #ae805c, transparent);
+}
+
+/* Copper gradient text */
+.text-gradient {
+  background: linear-gradient(135deg, #ae805c, #dfd3c3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Input styles */
+.form-input {
+  width: 100%;
+  background: transparent;
+  border: 1px solid #2a2a2a;
+  color: var(--color-beige);
+  padding: 0.75rem 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-input::placeholder {
+  color: rgba(223, 211, 195, 0.4);
+}
+
+.form-input:focus {
+  border-color: var(--color-copper);
+}
+
+/* Nav link */
+.nav-link {
+  color: rgba(223, 211, 195, 0.7);
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.nav-link:hover {
+  color: var(--color-copper);
+}
+
+/* Ken Burns animation */
+@keyframes kenBurns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.08); }
+}
+
+/* Fade in */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Slide up */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* transition-opacity with 1500ms */
+.duration-1500 {
+  transition-duration: 1500ms;
+}
