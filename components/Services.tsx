@@ -1,4 +1,5 @@
 "use client";
+import { motion } from "framer-motion";
 import NextImage from "next/image";
 import { useLang } from "@/lib/LangContext";
 
@@ -15,7 +16,13 @@ export default function Services() {
 
   return (
     <section id="services" className="py-16 md:py-28 px-4 md:px-6 max-w-7xl mx-auto">
-      <div className="text-center mb-12 md:mb-16">
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0 }}
+        transition={{ duration: 0.6 }}
+        className="text-center mb-12 md:mb-16"
+      >
         <p className="text-[#ae805c] text-xs tracking-[0.3em] uppercase mb-3">
           {t.services.subtitle}
         </p>
@@ -23,12 +30,16 @@ export default function Services() {
           {t.services.title}
         </h2>
         <div className="divider mx-auto" />
-      </div>
+      </motion.div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1">
         {t.services.items.map((item, i) => (
-          <div
+          <motion.div
             key={i}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0 }}
+            transition={{ duration: 0.6, delay: i * 0.08 }}
             className="group relative overflow-hidden"
           >
             <div className="aspect-[3/4] overflow-hidden relative bg-[#111]">
@@ -42,24 +53,16 @@ export default function Services() {
                 loading="lazy"
               />
             </div>
-
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/55 to-transparent" />
-
             <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6">
               <div className="text-2xl mb-2">{ICONS[i]}</div>
-              <h3 className="text-[#dfd3c3] text-base font-light mb-2 tracking-wide">
-                {item.title}
-              </h3>
-              <p className="text-[#dfd3c3]/60 text-sm leading-relaxed mb-1">
-                {item.text}
-              </p>
+              <h3 className="text-[#dfd3c3] text-base font-light mb-2 tracking-wide">{item.title}</h3>
+              <p className="text-[#dfd3c3]/60 text-sm leading-relaxed mb-1">{item.text}</p>
               {item.schedule && (
-                <p className="text-[#ae805c] text-xs tracking-wide mt-1">
-                  {item.schedule}
-                </p>
+                <p className="text-[#ae805c] text-xs tracking-wide mt-1">{item.schedule}</p>
               )}
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>
