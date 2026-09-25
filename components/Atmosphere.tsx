@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+// AnimatePresence kept only for lightbox
 import NextImage from "next/image";
 import { useLang } from "@/lib/LangContext";
 
@@ -82,16 +83,8 @@ export default function Atmosphere() {
           ))}
         </div>
 
-        {/* Gallery — starts visible, exit fade on tab switch */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 1 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-2"
-          >
+        {/* Gallery — key forces React remount on tab change, no animation needed */}
+        <div key={activeTab} className="grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-2">
             {images.map((src, i) => (
               <div
                 key={src}
@@ -111,8 +104,7 @@ export default function Atmosphere() {
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-all duration-300" />
               </div>
             ))}
-          </motion.div>
-        </AnimatePresence>
+        </div>
       </div>
 
       {/* Lightbox */}
