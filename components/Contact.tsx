@@ -1,4 +1,5 @@
 "use client";
+import { motion } from "framer-motion";
 import { useLang } from "@/lib/LangContext";
 
 const IconPin = () => (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>);
@@ -18,14 +19,14 @@ export default function Contact() {
     <section id="contact" className="relative" style={{ backgroundImage: "url(https://terrassaaskaneli.ge/files/gallery/terrace%20%281%29.jpg)", backgroundSize: "cover", backgroundPosition: "center top" }}>
       <div className="absolute inset-0 bg-[#0d0d0d]/88" />
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-28">
-        <div className="mb-16">
+        <motion.div initial={{ y: 24 }} whileInView={{ y: 0 }} viewport={{ once: true, amount: 0 }} transition={{ duration: 0.6 }} className="mb-16">
           <p className="text-[#ae805c] text-xs tracking-[0.3em] uppercase mb-3">Batumi, Georgia</p>
           <h2 className="text-4xl md:text-5xl font-light text-[#dfd3c3] mb-5">{c.title}</h2>
           <div className="divider" />
-        </div>
+        </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12 mb-12">
-          <div className="flex flex-col gap-0.5">
+          <motion.div initial={{ y: 28 }} whileInView={{ y: 0 }} viewport={{ once: true, amount: 0 }} transition={{ duration: 0.6, delay: 0.05 }} className="flex flex-col gap-0.5">
             <div className="glass p-7 flex gap-5 items-start">
               <div className="text-[#ae805c] mt-0.5 shrink-0"><IconPin /></div>
               <div>
@@ -57,12 +58,12 @@ export default function Contact() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="overflow-hidden border border-[#ae805c]/15 min-h-[420px]">
+          <motion.div initial={{ y: 28 }} whileInView={{ y: 0 }} viewport={{ once: true, amount: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="overflow-hidden border border-[#ae805c]/15 min-h-[420px]">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2976.8!2d41.62566444232918!3d41.64937522772158!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x406788f9c99b4de3%3A0x69e8e49ddb02c4c8!2sTerrassa%20Askaneli!5e0!3m2!1sen!2sge!4v1"
               width="100%" height="100%" style={{ border: 0, filter: "invert(90%) hue-rotate(180deg)", minHeight: "420px" }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Terrassa Askaneli" />
-          </div>
+          </motion.div>
         </div>
 
         <div className="flex items-center justify-center gap-1">

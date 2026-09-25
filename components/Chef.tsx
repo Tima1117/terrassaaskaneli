@@ -1,4 +1,5 @@
 "use client";
+import { motion } from "framer-motion";
 import NextImage from "next/image";
 import { useLang } from "@/lib/LangContext";
 
@@ -12,18 +13,24 @@ export default function Chef() {
       <div className="absolute inset-0 bg-black/75 -z-10" />
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
-          <div className="relative">
+          <motion.div
+            initial={{ x: -36 }}
+            whileInView={{ x: 0 }}
+            viewport={{ once: true, amount: 0 }}
+            transition={{ duration: 0.7 }}
+            className="relative"
+          >
             <div className="aspect-[3/4] max-w-xs mx-auto lg:mx-0 overflow-hidden relative">
               <NextImage src="https://terrassaaskaneli.ge/files/chef-1.jpg" alt={t.chef.name} fill sizes="(max-width: 1024px) 280px, 320px" className="object-cover object-top" quality={75} loading="lazy" />
             </div>
             <div className="absolute -bottom-4 -left-4 w-28 h-28 border-l-2 border-b-2 border-[#ae805c]/40" />
-          </div>
+          </motion.div>
           <div>
-            <p className="text-[#ae805c] text-xs tracking-[0.3em] uppercase mb-4">{t.chef.subtitle}</p>
-            <h2 className="text-3xl md:text-5xl font-light text-[#dfd3c3] mb-4">{t.chef.title}</h2>
-            <div className="divider mb-8" />
-            <h3 className="text-lg md:text-xl text-[#ae805c] font-light mb-6 italic">{t.chef.name}</h3>
-            <p className="text-[#dfd3c3]/70 leading-relaxed text-base md:text-lg">{t.chef.text}</p>
+            <motion.p initial={{ y: 20 }} whileInView={{ y: 0 }} viewport={{ once: true, amount: 0 }} transition={{ duration: 0.5 }} className="text-[#ae805c] text-xs tracking-[0.3em] uppercase mb-4">{t.chef.subtitle}</motion.p>
+            <motion.h2 initial={{ y: 24 }} whileInView={{ y: 0 }} viewport={{ once: true, amount: 0 }} transition={{ duration: 0.55, delay: 0.05 }} className="text-3xl md:text-5xl font-light text-[#dfd3c3] mb-4">{t.chef.title}</motion.h2>
+            <motion.div initial={{ y: 16 }} whileInView={{ y: 0 }} viewport={{ once: true, amount: 0 }} transition={{ duration: 0.5, delay: 0.1 }} className="divider mb-8" />
+            <motion.h3 initial={{ y: 20 }} whileInView={{ y: 0 }} viewport={{ once: true, amount: 0 }} transition={{ duration: 0.5, delay: 0.12 }} className="text-lg md:text-xl text-[#ae805c] font-light mb-6 italic">{t.chef.name}</motion.h3>
+            <motion.p initial={{ y: 20 }} whileInView={{ y: 0 }} viewport={{ once: true, amount: 0 }} transition={{ duration: 0.5, delay: 0.15 }} className="text-[#dfd3c3]/70 leading-relaxed text-base md:text-lg">{t.chef.text}</motion.p>
           </div>
         </div>
       </div>
