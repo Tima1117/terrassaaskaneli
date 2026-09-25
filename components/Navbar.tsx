@@ -63,12 +63,13 @@ export default function Navbar() {
 
         {/* Lang switcher + mobile burger */}
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-0.5">
             {LANGS.map((l) => (
               <button
                 key={l.code}
                 onClick={() => setLang(l.code)}
-                className={`text-xs px-2 py-1 transition-all duration-200 ${
+                style={{ touchAction: "manipulation" }}
+                className={`text-xs px-3 py-2.5 min-w-[40px] min-h-[40px] transition-all duration-200 ${
                   lang === l.code
                     ? "text-[#ae805c] bg-[#ae805c]/10 border border-[#ae805c]/40"
                     : "text-[#dfd3c3]/50 hover:text-[#dfd3c3]"
