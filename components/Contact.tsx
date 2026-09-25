@@ -68,7 +68,6 @@ export default function Contact() {
         backgroundImage: "url(https://terrassaaskaneli.ge/files/gallery/terrace%20%281%29.jpg)",
         backgroundSize: "cover",
         backgroundPosition: "center top",
-        backgroundAttachment: "fixed",
       }}
     >
       {/* Dark overlay */}

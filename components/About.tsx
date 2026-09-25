@@ -16,8 +16,8 @@ export default function About() {
   const fade = useScrollFade();
 
   return (
-    <section id="about" className="py-28 px-6 max-w-7xl mx-auto">
-      <div className="grid lg:grid-cols-2 gap-16 items-center">
+    <section id="about" className="py-16 md:py-28 px-4 md:px-6 max-w-7xl mx-auto">
+      <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
         {/* Text */}
         <div>
           <motion.div {...fade}>

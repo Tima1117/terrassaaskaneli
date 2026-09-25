@@ -7,10 +7,9 @@ export default function Chef() {
 
   return (
     <section
-      className="relative py-36 overflow-hidden"
+      className="relative py-24 md:py-36 overflow-hidden"
       style={{
         backgroundImage: "url(https://terrassaaskaneli.ge/files/paralax/parallex.jpg)",
-        backgroundAttachment: "fixed",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}

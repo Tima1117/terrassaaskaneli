@@ -49,7 +49,7 @@ export default function Atmosphere() {
   const images = GALLERY_DATA[activeTab].images;
 
   return (
-    <section id="atmosphere" className="py-28 bg-dark-card">
+    <section id="atmosphere" className="py-16 md:py-28 bg-dark-card">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <motion.div
