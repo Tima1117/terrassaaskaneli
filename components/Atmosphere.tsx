@@ -95,7 +95,8 @@ export default function Atmosphere() {
             {images.map((src, i) => (
               <div
                 key={src}
-                className="aspect-[4/3] overflow-hidden cursor-pointer group relative bg-[#111]"
+                className="overflow-hidden cursor-pointer group bg-[#111]"
+                style={{ position: 'relative', paddingBottom: '75%', height: 0 }}
                 onClick={() => setLightbox(src)}
               >
                 <NextImage
