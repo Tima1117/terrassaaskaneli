@@ -1,9 +1,15 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
 import { LangProvider } from "@/lib/LangContext";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-geist-sans" });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
 
 export const metadata: Metadata = {
   title: "Terrassa Askaneli — Restaurant in Batumi",
