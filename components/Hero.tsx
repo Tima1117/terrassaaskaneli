@@ -77,10 +77,10 @@ export default function Hero() {
         <AnimatePresence mode="wait">
           <motion.div
             key={textIdx}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.45 }}
+            initial={{ y: 12 }}
+            animate={{ y: 0 }}
+            exit={{ y: -8 }}
+            transition={{ duration: 0.35 }}
             className="px-2"
           >
             <h1 className="text-2xl sm:text-4xl md:text-5xl font-light text-white tracking-wide leading-tight drop-shadow-lg">
