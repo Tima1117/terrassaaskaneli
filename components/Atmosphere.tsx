@@ -82,14 +82,14 @@ export default function Atmosphere() {
           ))}
         </div>
 
-        {/* Gallery — tab switch uses AnimatePresence (state-triggered, not scroll) */}
+        {/* Gallery — starts visible, exit fade on tab switch */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
-            initial={{ opacity: 0 }}
+            initial={{ opacity: 1 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
+            transition={{ duration: 0.2 }}
             className="grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-2"
           >
             {images.map((src, i) => (
