@@ -1,14 +1,12 @@
 "use client";
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { useLang } from "@/lib/LangContext";
 import { Lang } from "@/lib/i18n";
-import Image from "next/image";
 
-const LANGS: { code: Lang; label: string; flag: string }[] = [
-  { code: "en", label: "EN", flag: "🇬🇧" },
-  { code: "ru", label: "RU", flag: "🇷🇺" },
-  { code: "ge", label: "GE", flag: "🇬🇪" },
+const LANGS: { code: Lang; label: string }[] = [
+  { code: "en", label: "EN" },
+  { code: "ru", label: "RU" },
+  { code: "ge", label: "GE" },
 ];
 
 export default function Navbar() {
@@ -33,10 +31,7 @@ export default function Navbar() {
   ];
 
   return (
-    <motion.header
-      initial={{ y: -80, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+    <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled ? "glass-dark shadow-lg shadow-black/40" : "bg-transparent"
       }`}
@@ -66,17 +61,17 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Lang switcher + mobile toggle */}
+        {/* Lang switcher + mobile burger */}
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-1">
             {LANGS.map((l) => (
               <button
                 key={l.code}
                 onClick={() => setLang(l.code)}
-                className={`text-xs px-2 py-1 rounded transition-all duration-200 ${
+                className={`text-xs px-2 py-1 transition-all duration-200 ${
                   lang === l.code
-                    ? "text-copper bg-copper/10 border border-copper/40"
-                    : "text-beige/50 hover:text-beige"
+                    ? "text-[#ae805c] bg-[#ae805c]/10 border border-[#ae805c]/40"
+                    : "text-[#dfd3c3]/50 hover:text-[#dfd3c3]"
                 }`}
               >
                 {l.label}
@@ -90,40 +85,33 @@ export default function Navbar() {
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="menu"
           >
-            <span className={`block w-6 h-0.5 bg-beige/80 transition-all ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
-            <span className={`block w-6 h-0.5 bg-beige/80 transition-all ${menuOpen ? "opacity-0" : ""}`} />
-            <span className={`block w-6 h-0.5 bg-beige/80 transition-all ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+            <span className={`block w-6 h-0.5 bg-[#dfd3c3]/80 transition-all duration-200 ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
+            <span className={`block w-6 h-0.5 bg-[#dfd3c3]/80 transition-all duration-200 ${menuOpen ? "opacity-0" : ""}`} />
+            <span className={`block w-6 h-0.5 bg-[#dfd3c3]/80 transition-all duration-200 ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
           </button>
         </div>
       </div>
 
-      {/* Mobile menu */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.nav
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="lg:hidden overflow-hidden glass-dark border-t border-copper/10"
-          >
-            <div className="px-6 py-4 flex flex-col gap-4">
-              {navItems.map((item) => (
-                <a
-                  key={item.key}
-                  href={item.href}
-                  target={item.external ? "_blank" : undefined}
-                  rel={item.external ? "noopener noreferrer" : undefined}
-                  className="nav-link py-1"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {t.nav[item.key as keyof typeof t.nav]}
-                </a>
-              ))}
-            </div>
-          </motion.nav>
-        )}
-      </AnimatePresence>
-    </motion.header>
+      {/* Mobile menu — CSS transition only, no Framer Motion */}
+      <nav
+        className="lg:hidden glass-dark border-t border-[#ae805c]/10 overflow-hidden transition-all duration-300"
+        style={{ maxHeight: menuOpen ? "400px" : "0px", opacity: menuOpen ? 1 : 0 }}
+      >
+        <div className="px-6 py-4 flex flex-col gap-4">
+          {navItems.map((item) => (
+            <a
+              key={item.key}
+              href={item.href}
+              target={item.external ? "_blank" : undefined}
+              rel={item.external ? "noopener noreferrer" : undefined}
+              className="nav-link py-1"
+              onClick={() => setMenuOpen(false)}
+            >
+              {t.nav[item.key as keyof typeof t.nav]}
+            </a>
+          ))}
+        </div>
+      </nav>
+    </header>
   );
 }
