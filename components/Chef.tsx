@@ -1,61 +1,69 @@
 "use client";
 import { motion } from "framer-motion";
+import NextImage from "next/image";
 import { useLang } from "@/lib/LangContext";
 
 export default function Chef() {
   const { t } = useLang();
 
   return (
-    <section
-      className="relative py-24 md:py-36 overflow-hidden"
-      style={{
-        backgroundImage: "url(https://terrassaaskaneli.ge/files/paralax/parallex.jpg)",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-dark/75" />
+    <section className="relative py-24 md:py-36 overflow-hidden">
+      {/* Background via Next/Image */}
+      <div className="absolute inset-0 -z-10">
+        <NextImage
+          src="https://terrassaaskaneli.ge/files/paralax/parallex.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover"
+          quality={60}
+          loading="lazy"
+        />
+      </div>
+      <div className="absolute inset-0 bg-black/75 -z-10" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6">
+        <div className="grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
           {/* Image */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
+            initial={{ opacity: 0, x: -36 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
             className="relative"
           >
-            <div className="aspect-[3/4] max-w-sm mx-auto overflow-hidden">
-              <img
+            <div className="aspect-[3/4] max-w-xs mx-auto lg:mx-0 overflow-hidden relative">
+              <NextImage
                 src="https://terrassaaskaneli.ge/files/chef-1.jpg"
                 alt={t.chef.name}
-                className="w-full h-full object-cover object-top"
+                fill
+                sizes="(max-width: 1024px) 280px, 320px"
+                className="object-cover object-top"
+                quality={75}
+                loading="lazy"
               />
             </div>
-            {/* Copper border accent */}
-            <div className="absolute -bottom-4 -left-4 w-32 h-32 border-l-2 border-b-2 border-copper/40" />
+            <div className="absolute -bottom-4 -left-4 w-28 h-28 border-l-2 border-b-2 border-[#ae805c]/40" />
           </motion.div>
 
           {/* Text */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
+            initial={{ opacity: 0, x: 36 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <p className="text-copper text-xs tracking-[0.3em] uppercase mb-4">
+            <p className="text-[#ae805c] text-xs tracking-[0.3em] uppercase mb-4">
               {t.chef.subtitle}
             </p>
-            <h2 className="text-4xl md:text-5xl font-light text-beige mb-4">
+            <h2 className="text-3xl md:text-5xl font-light text-[#dfd3c3] mb-4">
               {t.chef.title}
             </h2>
             <div className="divider mb-8" />
-            <h3 className="text-xl text-copper font-light mb-6 italic">
+            <h3 className="text-lg md:text-xl text-[#ae805c] font-light mb-6 italic">
               {t.chef.name}
             </h3>
-            <p className="text-beige/70 leading-relaxed text-lg">
+            <p className="text-[#dfd3c3]/70 leading-relaxed text-base md:text-lg">
               {t.chef.text}
             </p>
           </motion.div>
