@@ -1,5 +1,4 @@
 "use client";
-import { motion } from "framer-motion";
 import { useLang } from "@/lib/LangContext";
 
 const IconPin = () => (
@@ -48,13 +47,6 @@ const IconMapPin = () => (
   </svg>
 );
 
-const fade = (delay = 0) => ({
-  initial: { opacity: 0, y: 24 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true } as const,
-  transition: { duration: 0.6, delay },
-});
-
 export default function Contact() {
   const { t } = useLang();
   const c = t.contact;
@@ -71,60 +63,60 @@ export default function Contact() {
       }}
     >
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-dark/88" />
+      <div className="absolute inset-0 bg-[#0d0d0d]/88" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-28">
         {/* Header */}
-        <motion.div {...fade()} className="mb-16">
-          <p className="text-copper text-xs tracking-[0.3em] uppercase mb-3">Batumi, Georgia</p>
-          <h2 className="text-4xl md:text-5xl font-light text-beige mb-5">{c.title}</h2>
+        <div className="mb-16">
+          <p className="text-[#ae805c] text-xs tracking-[0.3em] uppercase mb-3">Batumi, Georgia</p>
+          <h2 className="text-4xl md:text-5xl font-light text-[#dfd3c3] mb-5">{c.title}</h2>
           <div className="divider" />
-        </motion.div>
+        </div>
 
         {/* Main grid: info left, map right */}
         <div className="grid lg:grid-cols-2 gap-12 mb-12">
           {/* Left: contact blocks */}
           <div className="flex flex-col gap-0.5">
             {/* Address block */}
-            <motion.div {...fade(0.1)} className="glass p-7 flex gap-5 items-start">
-              <div className="text-copper mt-0.5 shrink-0">
+            <div className="glass p-7 flex gap-5 items-start">
+              <div className="text-[#ae805c] mt-0.5 shrink-0">
                 <IconPin />
               </div>
               <div>
-                <p className="text-copper text-xs tracking-[0.25em] uppercase mb-2">
+                <p className="text-[#ae805c] text-xs tracking-[0.25em] uppercase mb-2">
                   {c.addressNote}
                 </p>
-                <p className="text-beige/85 leading-relaxed text-base">{c.address}</p>
+                <p className="text-[#dfd3c3]/85 leading-relaxed text-base">{c.address}</p>
                 <a
                   href="https://maps.app.goo.gl/Y5a7ngUXVvBKz69c8"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 mt-3 text-copper/70 hover:text-copper text-xs tracking-widest uppercase transition-colors"
+                  className="inline-flex items-center gap-1.5 mt-3 text-[#ae805c]/70 hover:text-[#ae805c] text-xs tracking-widest uppercase transition-colors"
                 >
                   <IconMapPin />
                   Google Maps →
                 </a>
               </div>
-            </motion.div>
+            </div>
 
             {/* Phone block */}
-            <motion.div {...fade(0.15)} className="glass p-7 flex gap-5 items-start">
-              <div className="text-copper mt-0.5 shrink-0">
+            <div className="glass p-7 flex gap-5 items-start">
+              <div className="text-[#ae805c] mt-0.5 shrink-0">
                 <IconPhone />
               </div>
               <div className="flex-1">
-                <p className="text-copper text-xs tracking-[0.25em] uppercase mb-2">
-                  Reservation & Info
+                <p className="text-[#ae805c] text-xs tracking-[0.25em] uppercase mb-2">
+                  Reservation &amp; Info
                 </p>
                 <a
                   href={`tel:${c.phone}`}
-                  className="block text-beige/85 text-xl font-light hover:text-copper transition-colors mb-2"
+                  className="block text-[#dfd3c3]/85 text-xl font-light hover:text-[#ae805c] transition-colors mb-2"
                 >
                   {c.phone}
                 </a>
                 <a
                   href={`mailto:${c.email}`}
-                  className="block text-beige/45 text-sm hover:text-copper/80 transition-colors mb-4"
+                  className="block text-[#dfd3c3]/45 text-sm hover:text-[#ae805c]/80 transition-colors mb-4"
                 >
                   {c.email}
                 </a>
@@ -140,45 +132,42 @@ export default function Contact() {
                   WhatsApp
                 </a>
               </div>
-            </motion.div>
+            </div>
 
             {/* Hours block */}
-            <motion.div {...fade(0.2)} className="glass p-7 flex gap-5 items-start">
-              <div className="text-copper mt-0.5 shrink-0">
+            <div className="glass p-7 flex gap-5 items-start">
+              <div className="text-[#ae805c] mt-0.5 shrink-0">
                 <IconClock />
               </div>
               <div className="flex-1">
-                <p className="text-copper text-xs tracking-[0.25em] uppercase mb-4">{h.title}</p>
+                <p className="text-[#ae805c] text-xs tracking-[0.25em] uppercase mb-4">{h.title}</p>
                 <div className="space-y-2.5 text-sm">
                   <div className="flex justify-between gap-4">
-                    <span className="text-beige/50">Restaurant</span>
-                    <span className="text-beige/80">11:00 – 00:00</span>
+                    <span className="text-[#dfd3c3]/50">Restaurant</span>
+                    <span className="text-[#dfd3c3]/80">11:00 – 00:00</span>
                   </div>
                   <div className="flex justify-between gap-4">
-                    <span className="text-beige/50">Kitchen</span>
-                    <span className="text-beige/80">11:00 – 23:00</span>
+                    <span className="text-[#dfd3c3]/50">Kitchen</span>
+                    <span className="text-[#dfd3c3]/80">11:00 – 23:00</span>
                   </div>
                   <div className="flex justify-between gap-4">
-                    <span className="text-beige/50">Live music</span>
-                    <span className="text-copper/80">21:00 – 23:00</span>
+                    <span className="text-[#dfd3c3]/50">Live music</span>
+                    <span className="text-[#ae805c]/80">21:00 – 23:00</span>
                   </div>
                   <div className="border-t border-white/5 pt-2.5 flex justify-between gap-4">
-                    <span className="text-beige/50">Wine shop</span>
-                    <span className="text-beige/65 text-right leading-relaxed">
+                    <span className="text-[#dfd3c3]/50">Wine shop</span>
+                    <span className="text-[#dfd3c3]/65 text-right leading-relaxed">
                       Mon–Fri 11:00–23:00<br />
                       Sat–Sun 12:00–22:00
                     </span>
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
 
           {/* Right: map */}
-          <motion.div
-            {...fade(0.25)}
-            className="overflow-hidden border border-copper/15 min-h-[420px]"
-          >
+          <div className="overflow-hidden border border-[#ae805c]/15 min-h-[420px]">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2976.8!2d41.62566444232918!3d41.64937522772158!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x406788f9c99b4de3%3A0x69e8e49ddb02c4c8!2sTerrassa%20Askaneli!5e0!3m2!1sen!2sge!4v1"
               width="100%"
@@ -189,14 +178,11 @@ export default function Contact() {
               referrerPolicy="no-referrer-when-downgrade"
               title="Terrassa Askaneli"
             />
-          </motion.div>
+          </div>
         </div>
 
         {/* Social row */}
-        <motion.div
-          {...fade(0.3)}
-          className="flex items-center justify-center gap-1"
-        >
+        <div className="flex items-center justify-center gap-1">
           {[
             {
               href: "https://www.facebook.com/AskaneliTerrassa/",
@@ -221,21 +207,21 @@ export default function Contact() {
               rel="noopener noreferrer"
               title={s.label}
               className="glass w-12 h-12 flex items-center justify-center
-                         text-beige/40 hover:text-copper hover:border-copper/40
+                         text-[#dfd3c3]/40 hover:text-[#ae805c] hover:border-[#ae805c]/40
                          border border-transparent transition-all duration-200"
             >
               {s.icon}
             </a>
           ))}
 
-          <div className="w-px h-6 bg-copper/20 mx-4" />
+          <div className="w-px h-6 bg-[#ae805c]/20 mx-4" />
 
           <a
             href="https://www.tripadvisor.com/Restaurant_Review-g297576-d10730462"
             target="_blank"
             rel="noopener noreferrer"
-            className="glass px-5 h-12 flex items-center gap-2 text-beige/40
-                       hover:text-copper border border-transparent hover:border-copper/40
+            className="glass px-5 h-12 flex items-center gap-2 text-[#dfd3c3]/40
+                       hover:text-[#ae805c] border border-transparent hover:border-[#ae805c]/40
                        text-xs tracking-widest uppercase transition-all"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -243,7 +229,7 @@ export default function Contact() {
             </svg>
             TripAdvisor
           </a>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

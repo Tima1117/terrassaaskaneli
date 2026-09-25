@@ -1,5 +1,4 @@
 "use client";
-import { motion } from "framer-motion";
 import NextImage from "next/image";
 import { useLang } from "@/lib/LangContext";
 
@@ -19,13 +18,7 @@ export default function WineShop() {
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
           {/* Mosaic */}
-          <motion.div
-            initial={{ opacity: 0, x: -36 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="grid grid-cols-2 gap-1 md:gap-2"
-          >
+          <div className="grid grid-cols-2 gap-1 md:gap-2">
             <div className="col-span-2 aspect-[16/7] overflow-hidden relative bg-[#111]">
               <NextImage
                 src={SHOP_IMAGES[0]}
@@ -50,15 +43,10 @@ export default function WineShop() {
                 />
               </div>
             ))}
-          </motion.div>
+          </div>
 
           {/* Text */}
-          <motion.div
-            initial={{ opacity: 0, x: 36 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-          >
+          <div>
             <p className="text-[#ae805c] text-xs tracking-[0.3em] uppercase mb-4">
               {ws.subtitle}
             </p>
@@ -73,7 +61,7 @@ export default function WineShop() {
               <p className="text-[#ae805c] text-xs tracking-widest uppercase mb-1.5">Hours</p>
               <p className="text-[#dfd3c3]/60 text-sm">{ws.hours}</p>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

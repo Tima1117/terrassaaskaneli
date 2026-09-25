@@ -37,24 +37,18 @@ export default function Reservation() {
         backgroundPosition: "center",
       }}
     >
-      <div className="absolute inset-0 bg-dark/80" />
+      <div className="absolute inset-0 bg-[#0d0d0d]/80" />
 
       <div className="relative z-10 max-w-3xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <p className="text-copper text-xs tracking-[0.3em] uppercase mb-3">
+        <div className="text-center mb-12">
+          <p className="text-[#ae805c] text-xs tracking-[0.3em] uppercase mb-3">
             {r.subtitle}
           </p>
-          <h2 className="text-4xl md:text-5xl font-light text-beige mb-6">
+          <h2 className="text-4xl md:text-5xl font-light text-[#dfd3c3] mb-6">
             {r.title}
           </h2>
           <div className="divider mx-auto" />
-        </motion.div>
+        </div>
 
         {sent ? (
           <motion.div
@@ -63,20 +57,16 @@ export default function Reservation() {
             className="glass text-center py-12 px-8"
           >
             <div className="text-4xl mb-4">✓</div>
-            <p className="text-beige/80 text-lg">{r.success}</p>
+            <p className="text-[#dfd3c3]/80 text-lg">{r.success}</p>
             <button
-              className="mt-6 text-copper text-sm tracking-widest uppercase hover:text-copper-light"
+              className="mt-6 text-[#ae805c] text-sm tracking-widest uppercase"
               onClick={() => setSent(false)}
             >
               ←
             </button>
           </motion.div>
         ) : (
-          <motion.form
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+          <form
             onSubmit={handleSubmit}
             className="grid grid-cols-1 md:grid-cols-2 gap-3"
           >
@@ -99,14 +89,14 @@ export default function Reservation() {
                 disabled={loading}
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                className="px-12 py-3.5 bg-copper text-dark font-medium tracking-widest
-                           text-sm uppercase hover:bg-copper-light transition-colors
+                className="px-12 py-3.5 bg-[#ae805c] text-black font-medium tracking-widest
+                           text-sm uppercase hover:bg-[#c49878] transition-colors
                            duration-200 disabled:opacity-50"
               >
                 {loading ? "..." : r.submit}
               </motion.button>
             </div>
-          </motion.form>
+          </form>
         )}
       </div>
     </section>

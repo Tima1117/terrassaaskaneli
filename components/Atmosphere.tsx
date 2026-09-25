@@ -54,13 +54,8 @@ export default function Atmosphere() {
   return (
     <section id="atmosphere" className="py-16 md:py-28 bg-[#1a1a1a]">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-10 md:mb-12"
-        >
+        {/* Header — no whileInView */}
+        <div className="text-center mb-10 md:mb-12">
           <p className="text-[#ae805c] text-xs tracking-[0.3em] uppercase mb-3">
             {t.atmosphere.subtitle}
           </p>
@@ -68,7 +63,7 @@ export default function Atmosphere() {
             {t.atmosphere.title}
           </h2>
           <div className="divider mx-auto" />
-        </motion.div>
+        </div>
 
         {/* Tabs */}
         <div className="flex flex-wrap justify-center gap-2 mb-8">
@@ -87,22 +82,19 @@ export default function Atmosphere() {
           ))}
         </div>
 
-        {/* Gallery */}
+        {/* Gallery — tab switch uses AnimatePresence (state-triggered, not scroll) */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.25 }}
             className="grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-2"
           >
             {images.map((src, i) => (
-              <motion.div
+              <div
                 key={src}
-                initial={{ opacity: 0, scale: 0.97 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: i * 0.05 }}
                 className="aspect-[4/3] overflow-hidden cursor-pointer group relative bg-[#111]"
                 onClick={() => setLightbox(src)}
               >
@@ -113,10 +105,10 @@ export default function Atmosphere() {
                   sizes="(max-width: 768px) 50vw, 33vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                   quality={65}
-                  loading="lazy"
+                  loading={i < 2 ? "eager" : "lazy"}
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-all duration-300" />
-              </motion.div>
+              </div>
             ))}
           </motion.div>
         </AnimatePresence>

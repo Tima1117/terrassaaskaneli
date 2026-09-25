@@ -1,5 +1,4 @@
 "use client";
-import { motion } from "framer-motion";
 import NextImage from "next/image";
 import { useLang } from "@/lib/LangContext";
 
@@ -16,13 +15,7 @@ export default function Services() {
 
   return (
     <section id="services" className="py-16 md:py-28 px-4 md:px-6 max-w-7xl mx-auto">
-      <motion.div
-        initial={{ opacity: 0, y: 28 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-12 md:mb-16"
-      >
+      <div className="text-center mb-12 md:mb-16">
         <p className="text-[#ae805c] text-xs tracking-[0.3em] uppercase mb-3">
           {t.services.subtitle}
         </p>
@@ -30,16 +23,12 @@ export default function Services() {
           {t.services.title}
         </h2>
         <div className="divider mx-auto" />
-      </motion.div>
+      </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1">
         {t.services.items.map((item, i) => (
-          <motion.div
+          <div
             key={i}
-            initial={{ opacity: 0, y: 36 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: i * 0.08 }}
             className="group relative overflow-hidden"
           >
             <div className="aspect-[3/4] overflow-hidden relative bg-[#111]">
@@ -70,7 +59,7 @@ export default function Services() {
                 </p>
               )}
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
     </section>
